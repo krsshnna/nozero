@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NoZero — Zero Excuses. Zero Zero Days.</title>
+  <meta name="description" content="NoZero is a daily discipline tracker. Four goals. One day. Zero excuses. Build a streak and never have a zero day.">
+  <meta name="theme-color" content="#0a0a0f" id="metaTheme">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-fx" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span></div>
+
+  <header class="topbar">
+    <a class="brand" href="#today" aria-label="NoZero — back to top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="26" height="26"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M7 25 25 7" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-name">NO<b>ZERO</b></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#today">Today</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#history">History</a>
+    </nav>
+    <div class="top-actions">
+      <button id="themeBtn" class="icon-btn" type="button" aria-label="Toggle dark or light mode" title="Toggle dark / light">
+        <svg class="ico-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button id="settingsBtn" class="icon-btn" type="button" aria-label="Open settings" title="Settings">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="today" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span><span id="dateLabel">—</span></p>
+        <h1 class="tagline"><span>ZERO EXCUSES.</span> <span class="grad">ZERO ZERO DAYS.</span></h1>
+        <p class="lede">Four promises. One day. Keep every single one — or the day doesn't count.</p>
+        <figure class="quote-card">
+          <blockquote id="quoteText"></blockquote>
+          <button id="newQuote" class="link-btn" type="button">New quote ↻</button>
+        </figure>
+      </div>
+
+      <div class="hero-stats card">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+            <defs>
+              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" style="stop-color:var(--accent)"/>
+                <stop offset="1" style="stop-color:var(--accent-2)"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-bg" cx="60" cy="60" r="52"/>
+            <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52" stroke="url(#ringGrad)"/>
+          </svg>
+          <div class="ring-center"><span id="pctText">0%</span><small>today</small></div>
+        </div>
+        <div class="bar" id="barTrack" role="progressbar" aria-label="Daily progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="barFill"></span></div>
+        <p id="statusText" class="status">0 of 4 goals complete</p>
+        <div class="stat-row">
+          <div class="stat"><span class="stat-num" id="streakNum">0</span><span class="stat-label">🔥 Current streak</span></div>
+          <div class="stat"><span class="stat-num" id="longestNum">0</span><span class="stat-label">🏆 Longest streak</span></div>
+          <div class="stat"><span class="stat-num" id="totalNum">0</span><span class="stat-label">✅ Days kept</span></div>
+        </div>
+        <div id="doneBanner" class="done-banner" hidden>
+          <strong>DAY COMPLETED. PROMISE KEPT.</strong>
+          <span id="doneReward" class="muted"></span>
+          <button id="replayBtn" class="link-btn" type="button">Open celebration / reward</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOALS -->
+    <section class="goals" aria-label="Daily goals">
+
+      <article class="goal card" id="goal-bath">
+        <header class="goal-head">
+          <span class="goal-num">01</span>
+          <div class="goal-title"><h2>Take a Bath</h2><p>Reset the body. Start clean.</p></div>
+          <span class="chip" id="chip-bath">Pending</span>
+        </header>
+        <button id="bathBtn" class="check-btn" type="button" aria-pressed="false">
+          <span class="check-box"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span id="bathLabel">Tap to mark as done</span>
+        </button>
+      </article>
+
+      <article class="goal card" id="goal-water">
+        <header class="goal-head">
+          <span class="goal-num">02</span>
+          <div class="goal-title"><h2>Drink 4L Water</h2><p>Hydrate like it's your job.</p></div>
+          <span class="chip" id="chip-water">Pending</span>
+        </header>
+        <div class="water-body">
+          <div class="tank" role="img" aria-label="Water level" id="tank">
+            <div class="tank-fill" id="tankFill"></div>
+            <div class="tank-ticks" aria-hidden="true"><i>4L</i><i>3L</i><i>2L</i><i>1L</i></div>
+            <div class="tank-text"><b id="waterAmt">0.00</b><small>of 4 L</small></div>
+          </div>
+          <div class="water-ctrl">
+            <button class="btn water-btn" type="button" data-add="250">+250 ml</button>
+            <button class="btn water-btn" type="button" data-add="500">+500 ml</button>
+            <button class="btn water-btn" type="button" data-add="1000">+1 L</button>
+            <button id="waterUndo" class="btn ghost" type="button">↶ Undo last</button>
+            <p id="waterNote" class="muted">4 L to go</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="goal card" id="goal-skill">
+        <header class="goal-head">
+          <span class="goal-num">03</span>
+          <div class="goal-title"><h2>Learn a Skill — 5 Hours</h2><p>Deep work. Phone away.</p></div>
+          <span class="chip" id="chip-skill">Pending</span>
+        </header>
+        <div class="timer-body">
+          <div class="timer-read" id="skillTime">00:00:00</div>
+          <p class="timer-sub" id="skillRemain">5h 00m to go</p>
+          <div class="mini-bar"><span id="skillBar"></span></div>
+          <div class="btn-row">
+            <button class="btn primary" id="skillToggle" type="button">Start</button>
+            <button class="btn ghost" id="skillReset" type="button">Reset</button>
+          </div>
+          <details class="sessions">
+            <summary>Sessions <span class="count" id="skillCount">0</span></summary>
+            <ol id="skillSessions" class="session-list"></ol>
+          </details>
+        </div>
+      </article>
+
+      <article class="goal card" id="goal-meditate">
+        <header class="goal-head">
+          <span class="goal-num">04</span>
+          <div class="goal-title"><h2>Meditate — 10 Minutes</h2><p>Quiet the noise. Own the mind.</p></div>
+          <span class="chip" id="chip-meditate">Pending</span>
+        </header>
+        <div class="timer-body">
+          <div class="timer-read" id="meditateTime">00:00:00</div>
+          <p class="timer-sub" id="meditateRemain">10m 00s to go</p>
+          <div class="mini-bar"><span id="meditateBar"></span></div>
+          <div class="btn-row">
+            <button class="btn primary" id="meditateToggle" type="button">Start</button>
+            <button class="btn ghost" id="meditateReset" type="button">Reset</button>
+          </div>
+          <details class="sessions">
+            <summary>Sessions <span class="count" id="meditateCount">0</span></summary>
+            <ol id="meditateSessions" class="session-list"></ol>
+          </details>
+        </div>
+      </article>
+    </section>
+
+    <!-- CALENDAR -->
+    <section id="calendar" class="panel card">
+      <div class="panel-head">
+        <h2>Calendar</h2>
+        <div class="cal-nav">
+          <button id="calPrev" class="icon-btn sm" type="button" aria-label="Previous month">‹</button>
+          <span id="calTitle" class="cal-title">—</span>
+          <button id="calNext" class="icon-btn sm" type="button" aria-label="Next month">›</button>
+          <button id="calToday" class="link-btn" type="button">Today</button>
+        </div>
+      </div>
+      <div class="cal-wrap">
+        <div class="cal">
+          <div class="cal-dow" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+          <div id="calGrid" class="cal-grid"></div>
+          <div class="legend">
+            <span><i class="lg done"></i>Promise kept</span>
+            <span><i class="lg part"></i>In progress</span>
+            <span><i class="lg zero"></i>Zero day</span>
+          </div>
+        </div>
+        <aside id="dayDetail" class="day-detail" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="history" class="panel card">
+      <div class="panel-head"><h2>Completed Days</h2></div>
+      <div class="hist-stats">
+        <div><b id="hCur">0</b><span>Current streak</span></div>
+        <div><b id="hLong">0</b><span>Longest streak</span></div>
+        <div><b id="hTotal">0</b><span>Successful days</span></div>
+        <div><b id="hRate">0%</b><span>Success rate</span></div>
+      </div>
+      <ul id="historyList" class="history-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><b>NoZero</b> — ZERO EXCUSES. ZERO ZERO DAYS.</p>
+    <p class="muted">Your data lives only in this browser (localStorage). Use Settings → Export to back it up.</p>
+  </footer>
+
+  <!-- SETTINGS -->
+  <div class="modal" id="settingsModal" hidden role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-card">
+      <div class="modal-head"><h2 id="settingsTitle">Settings</h2><button class="icon-btn sm" type="button" data-close aria-label="Close settings">✕</button></div>
+
+      <div class="set-group">
+        <h3>Theme</h3>
+        <div class="seg">
+          <button type="button" id="themeDark">🌙 Dark</button>
+          <button type="button" id="themeLight">☀️ Light</button>
+        </div>
+      </div>
+
+      <div class="set-group">
+        <h3>Accent colour</h3>
+        <div class="swatches" id="swatches"></div>
+        <label class="custom-color">Custom <input type="color" id="accentCustom" value="#ff5a36" aria-label="Pick a custom accent colour"></label>
+      </div>
+
+      <div class="set-group">
+        <h3>Sound</h3>
+        <label class="switch"><input type="checkbox" id="soundCheck"><span>Celebration &amp; goal chimes</span></label>
+        <button class="btn ghost sm" id="testSound" type="button">▶ Test sound</button>
+      </div>
+
+      <div class="set-group">
+        <h3>Your data</h3>
+        <div class="btn-row wrap">
+          <button class="btn ghost" id="exportBtn" type="button">⬇ Export backup</button>
+          <button class="btn ghost" id="importBtn" type="button">⬆ Import backup</button>
+        </div>
+        <div class="btn-row wrap">
+          <button class="btn danger-ghost" id="resetTodayBtn" type="button">Reset today</button>
+          <button class="btn danger" id="resetAllBtn" type="button">Erase all history</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRM -->
+  <div class="modal top" id="confirmModal" hidden role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText">
+    <div class="modal-card small">
+      <h2 id="confirmTitle">Are you sure?</h2>
+      <p id="confirmText" class="muted"></p>
+      <div class="btn-row end">
+        <button class="btn ghost" id="confirmCancel" type="button">Cancel</button>
+        <button class="btn danger" id="confirmOk" type="button">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CELEBRATION -->
+  <div class="celebrate" id="celebrate" hidden role="dialog" aria-modal="true" aria-labelledby="celTitle">
+    <canvas id="confetti" aria-hidden="true"></canvas>
+    <div class="cel-card">
+      <p class="cel-kicker">4 / 4 GOALS · LOCKED IN</p>
+      <h2 class="cel-title" id="celTitle">DAY COMPLETED.<br><span class="grad">PROMISE KEPT.</span></h2>
+      <p class="cel-streak" id="celStreak"></p>
+      <blockquote id="celQuote" class="cel-quote"></blockquote>
+      <div class="reward">
+        <p>Choose your reward — you earned it.</p>
+        <div class="reward-grid" id="rewardGrid">
+          <button type="button" class="reward-btn" data-reward="coffee"><span>☕</span>Coffee</button>
+          <button type="button" class="reward-btn" data-reward="coke"><span>🥤</span>Coke</button>
+          <button type="button" class="reward-btn" data-reward="snacks"><span>🍿</span>Snacks</button>
+          <button type="button" class="reward-btn" data-reward="custom"><span>✨</span>Custom</button>
+        </div>
+        <input id="customReward" class="text-input" type="text" maxlength="40" placeholder="Name your treat…" hidden>
+        <p id="rewardSaved" class="reward-saved"></p>
+      </div>
+      <div class="btn-row center">
+        <button id="celClose" class="btn primary big" type="button">Claim it &amp; close</button>
+        <button id="celSound" class="btn ghost" type="button" aria-label="Toggle sound" title="Toggle sound">🔊</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+
+  <noscript><p style="padding:24px;text-align:center">NoZero needs JavaScript enabled to track your day.</p></noscript>
+  <script src="script.js"></script>
+</body>
+</html>
